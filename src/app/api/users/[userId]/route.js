@@ -34,3 +34,20 @@ export async function PUT(request, content) {
     { status: 201 }
   );
 }
+
+export function DELETE(request, content) {
+  let id = content.params.userId;
+  console.log(content.params);
+  console.log("jai");
+  if (id) {
+    return NextResponse.json(
+      { result: "user deleted successfully", success: true },
+      { status: 200 }
+    );
+  } else {
+    return NextResponse.json(
+      { result: "Please enter Valid field", success: false },
+      { status: 400 }
+    );
+  }
+}
