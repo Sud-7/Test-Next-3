@@ -1,5 +1,6 @@
 import { usersData } from "@/app/util/db";
 import { NextResponse } from "next/server";
+import nextConfig from "../../../../../next.config.mjs";
 
 export function GET(request, response) {
   console.log(response.params.userId);
@@ -13,4 +14,16 @@ export function GET(request, response) {
       ? { result: "No result found", success: false }
       : { result: userDetails[0], success: true }
   );
+}
+
+export async function PUT(request, content) {
+  let payload = await request.json();
+  payload.id = content.params.userId;
+  console.log(payload);
+  if (!payload.id || !payload.name || !payload.age || !payload.city) {
+    return NextResponse.json({ result: "Some fields are missing" });
+  }
+  return NextResponse.json({
+    result: "User updated successfully ",
+  });
 }
