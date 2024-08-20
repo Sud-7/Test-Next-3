@@ -21,9 +21,16 @@ export async function PUT(request, content) {
   payload.id = content.params.userId;
   console.log(payload);
   if (!payload.id || !payload.name || !payload.age || !payload.city) {
-    return NextResponse.json({ result: "Some fields are missing" });
+    return NextResponse.json(
+      { result: "Some fields are missing", success: false },
+      { status: 401 }
+    );
   }
-  return NextResponse.json({
-    result: "User updated successfully ",
-  });
+  return NextResponse.json(
+    {
+      result: "User updated successfully ",
+      success: true,
+    },
+    { status: 201 }
+  );
 }

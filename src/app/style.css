@@ -20,3 +20,7 @@
   margin-top: 100px;
   text-align: -webkit-center;
 }
+.user-item span {
+  display: inline-block;
+  width: 100px;
+}
