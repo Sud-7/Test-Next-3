@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import "@/app/style1.css";
+import Link from "next/link";
 
 export default function Page() {
   const [name, setName] = useState("");
@@ -67,6 +68,7 @@ export default function Page() {
       />
       <button onClick={addProduct}>Add Product</button>
       <button onClick={clear}>Clear</button>
+      <Link href={`/`}>Get Back Home</Link>
     </div>
   );
 }

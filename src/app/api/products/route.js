@@ -8,9 +8,9 @@ export async function GET() {
     await mongoose.connect(process.env.MONGO_URL);
     data = await Product.find();
   } catch (error) {
-    data = { success: false };
+    data = { result: "error" };
   }
-  return NextResponse.json({ result: data });
+  return NextResponse.json({ data });
 }
 
 export async function POST(request) {
