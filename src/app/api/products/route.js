@@ -18,5 +18,6 @@ export async function POST(request) {
   await mongoose.connect(process.env.MONGO_URL);
   let product = new Product(payload);
   const result = await product.save();
-  return NextResponse.json({ result, success: true });
+  const actual = result.data;
+  return NextResponse.json({ actual, success: true });
 }
