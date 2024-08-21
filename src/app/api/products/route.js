@@ -12,3 +12,11 @@ export async function GET() {
   }
   return NextResponse.json({ result: data });
 }
+
+export async function POST(request) {
+  let payload = await request.json();
+  await mongoose.connect(process.env.MONGO_URL);
+  let product = new Product(payload);
+  const result = await product.save();
+  return NextResponse.json({ result, success: true });
+}
